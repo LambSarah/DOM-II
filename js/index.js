@@ -1,4 +1,10 @@
-// add animation when nav links are moused over and turn back when mouseout
+function listener(event) {
+    console.log(`
+        event passing through ${event.currentTarget.nodeName || 'Window'}
+        target-->${event.target.nodeName}`);
+}
+
+// add mouseover and mouseout event listeners
 let navLinks = document.querySelectorAll(".nav-link");
 
 // Add event listeners to each nav link
@@ -19,6 +25,8 @@ function navMouseOver(link) {
 function navMouseOut(link) {
     link.style.transform = 'rotateZ(0deg)';
 }
+//**************************************************************************************************** */
+
 
 // add event listener when domContented loaded, h1 slowly gets bigger and turns red
 let loaded = document.addEventListener('DOMContentLoaded', welcome);
@@ -35,81 +43,107 @@ function welcome() {
     };
     Object.assign(welcomeH1.style, welcomeH1Styles);
 }
-window.setTimeout(undoWelcomeChange(), '3000');
-
-function undoWelcomeChange() {
-
-    welcomeH1.style.transform = 'none';
-}
+//**************************************************************************************************** */
 // add scroll event listener to document
-//****** */
+// document.addEventListener('scroll)
 
 
+//***************************************************************************************************** */
+// add dblclick event listener
+let btns = document.querySelectorAll('.btn'); // select all buttons
+console.log(btns);
+let i = 0;
+btns.forEach((btn) => {
+    btn.setAttribute('id', `btn${i}`);
+    i++;
+});
+let btn0 = document.querySelector('#btn0');
+btn0.addEventListener('dblclick', (event) => {
+    dblClickBtn(btn0);
+});
 
-// document.addEventListener('contextMenu');
+let btn1 = document.querySelector('#btn1');
+btn1.addEventListener('dblclick', (event) => {
+    dblClickBtn(btn1);
+});
+let btn2 = document.querySelector("#btn2");
+btn2.addEventListener('dblclick', (event) => {
+    dblClickBtn(btn2);
+});
+
+function dblClickBtn(target) {
+    target.style.transition = 'transform 3s';
+    target.style.transform = 'scale(2)';
+
+}
+
+console.log(btns);
+// document.addEventListener('dblclick');
 //********* */
 
-
+//**************************************************************************************************** */
 // add mousedown event on lets go picture, changes to another picture for 10 seconds
 let imgs = document.querySelectorAll('.img-content'); // select parent of img
 let newImg = document.createElement('img'); // new img that it will transition to
-newImg.setAttribute('id', 'lookMapImg'); // set it of new img
-newImg.setAttribute('src', 'img/lookingAtMap.jpeg');
+newImg.setAttribute('src', 'img/blackWhiteMap.jpg');
 
-let newImgStyle = {
-    'transition': '1s ease-in-out', // Add style properties to newImg
-    'height': '300px',
-    'width': '400px',
-    'display': 'none'
+let newImgStyle = { // create a style object for newImg
+    'transition': 'all 2s ease-in-out', // to transition from other img
+    'height': '300px', // set height
+    'width': '400px', //  set width
+    'opacity': '0', // sets opacity to 0 so it doesnt show before transition
+    'alt': 'Black and White Map',
+    'position': 'absolute'
 };
-Object.assign(newImg.style, newImgStyle);
-
+Object.assign(newImg.style, newImgStyle); // assign style object to newImg
 document.querySelector('.img-content').appendChild(newImg); //  append newImg to same div as old img
 
-newImg.classList.add('hidden'); // hides newImg 
-
 let letsGoImg = imgs[0].children[0]; // select original img
-letsGoImg.style.transition = letsGoImg.style.transition = 'all 2s ease-in-out';
+letsGoImg.style.transition = 'all 2s ease-in-out'; //sets transition parameters
 newImg.style.width = "400px";
-newImg.style.transition = 'all 2s ease-in-out';
 let mouseDownEvent = document.addEventListener('mousedown', (event) => { // create event listener
-    letsGoImg.style.position = 'absolute'; // add css for crossfading 
+    // add css for crossfading 
     letsGoImg.style.opacity = 0;
-    newImg.classList.remove('hidden');
     newImg.style.display = 'block';
     newImg.style.opacity = 1;
-
-
 });
-//  letsGoImg.setAttribute('src', 'img/lookingAtMap.jpeg');
-// setTimeout(letsGoImg.setAttribute('src', '/img/adventure.jpg'), 10000);
-//**********//
 
-
-
+//***************************************************************************************************** */
+// add mouseup event listener
 //document.addEventListener('mouseup');
-//********* */
 
 
 
 
+//***************************************************************************************************** */
+// add mousemove event listener
 // document.addEventListener('mousemove');
-//********* */
 
+
+//***************************************************************************************************** */
+// add keydown event listener
 
 
 
 // document.addEventListener('keydown');
-//********* */
-
+//***************************************************************************************************** */
+// add keyup event listener
 
 
 
 // document.addEventListener('keyup');
-//********* */
-
+//***************************************************************************************************** */
+// add focus event listener
 
 
 
 // document.addEventListener('focus');
-//********* */
+//***************************************************************************************************** */
+
+function stopPropagation(event) {
+    if (event.stopPropagation !== undefined) {
+        event.stopPropagation();
+    } else {
+        event.cancelBubble = true;
+    }
+}
