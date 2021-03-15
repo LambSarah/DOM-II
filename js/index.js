@@ -3,7 +3,7 @@ function listener(event) {
         event passing through ${event.currentTarget.nodeName || 'Window'}
         target-->${event.target.nodeName}`);
 }
-
+//**********************#1 & #2********************************************************************** */
 // add mouseover and mouseout event listeners
 let navLinks = document.querySelectorAll(".nav-link");
 
@@ -25,8 +25,7 @@ function navMouseOver(link) {
 function navMouseOut(link) {
     link.style.transform = 'rotateZ(0deg)';
 }
-//**************************************************************************************************** */
-
+//*******************#3*************************************************************************** */
 
 // add event listener when domContented loaded, h1 slowly gets bigger and turns red
 let loaded = document.addEventListener('DOMContentLoaded', welcome);
@@ -43,12 +42,8 @@ function welcome() {
     };
     Object.assign(welcomeH1.style, welcomeH1Styles);
 }
-//**************************************************************************************************** */
-// add scroll event listener to document
-// document.addEventListener('scroll)
+//*******************#4********************************************************************************* */
 
-
-//***************************************************************************************************** */
 // add dblclick event listener
 let btns = document.querySelectorAll('.btn'); // select all buttons
 console.log(btns);
@@ -59,15 +54,18 @@ btns.forEach((btn) => {
 });
 let btn0 = document.querySelector('#btn0');
 btn0.addEventListener('dblclick', (event) => {
+    listener(event);
     dblClickBtn(btn0);
 });
 
 let btn1 = document.querySelector('#btn1');
 btn1.addEventListener('dblclick', (event) => {
+    listener(event);
     dblClickBtn(btn1);
 });
 let btn2 = document.querySelector("#btn2");
 btn2.addEventListener('dblclick', (event) => {
+    listener(event);
     dblClickBtn(btn2);
 });
 
@@ -77,11 +75,8 @@ function dblClickBtn(target) {
 
 }
 
-console.log(btns);
-// document.addEventListener('dblclick');
-//********* */
+//******************#5********************************************************************************** */
 
-//**************************************************************************************************** */
 // add mousedown event on lets go picture, changes to another picture for 10 seconds
 let imgs = document.querySelectorAll('.img-content'); // select parent of img
 let newImg = document.createElement('img'); // new img that it will transition to
@@ -103,43 +98,53 @@ letsGoImg.style.transition = 'all 2s ease-in-out'; //sets transition parameters
 newImg.style.width = "400px";
 let mouseDownEvent = document.addEventListener('mousedown', (event) => { // create event listener
     // add css for crossfading 
+    listener(event);
     letsGoImg.style.opacity = 0;
     newImg.style.display = 'block';
     newImg.style.opacity = 1;
 });
 
-//***************************************************************************************************** */
+//******************#6******************************************************************************** */
+// add contextMenu event listener
+let text = document.querySelectorAll('p'); // select all paragraphs
+text.forEach((txt) => { // adding contextmenu event listener to each
+    txt = addEventListener('contextmenu', e => {
+        listener(e);
+        e.preventDefault(); // preventing the contextmenu from showing when right clicking
+    });
+});
+
+
+// document.addEventListener('mousemove');
+
+
+//****************#7******************************************************************************** */
 // add mouseup event listener
 //document.addEventListener('mouseup');
 
 
 
 
-//***************************************************************************************************** */
-// add mousemove event listener
-// document.addEventListener('mousemove');
-
-
-//***************************************************************************************************** */
+//****************#8********************************************************************************* */
 // add keydown event listener
-
-
-
 // document.addEventListener('keydown');
-//***************************************************************************************************** */
-// add keyup event listener
 
 
-
-// document.addEventListener('keyup');
-//***************************************************************************************************** */
+//*************************************************************************************************** */
 // add focus event listener
-
-
-
 // document.addEventListener('focus');
-//***************************************************************************************************** */
 
+
+//*******************#9********************************************************************************* */
+// add keyup event listener
+// document.addEventListener('keyup');
+//******************#10********************************************************************************* */
+
+// add scroll event listener to document
+// document.addEventListener('scroll)
+//**************************************************************************************************** */
+
+//************Stop  Propagation ************************************************************* */
 function stopPropagation(event) {
     if (event.stopPropagation !== undefined) {
         event.stopPropagation();
