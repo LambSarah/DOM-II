@@ -1,3 +1,6 @@
+import { gsap } from "gsap";
+gsap.registerPlugin(ScrollTrigger);
+
 function listener(event) {
     console.log(`
         event passing through ${event.currentTarget.nodeName || 'Window'}
@@ -15,6 +18,7 @@ navLinks.forEach((link) => {
     link.addEventListener('mouseout', function(event) { // mouse leave
         navMouseOut(link);
     });
+
 });
 
 // mouse over function
@@ -135,11 +139,17 @@ document.body.addEventListener('keydown', (event) => {
 //***************#9*********************************************************************************** */
 // add select event listener
 let pageHeader = document.querySelector('h1');
+let destination = document.querySelector('.content-destination h2');
+console.log(destination);
 document.addEventListener('scroll', (event) => {
-
+    gsap.to(destination, {
+        scrollTrigger: destination,
+        x: 500
+    });
+    // ScrollTrigger.create({
+    //     trigger:'#'
+    // })
 });
-
-
 //**************#10********************************************************************************* */
 // add keyup event listener
 
