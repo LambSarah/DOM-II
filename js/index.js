@@ -121,6 +121,7 @@ headers.forEach((header) => {
     header.addEventListener('mouseup', (event) => {
         listener(event);
         header.style.transform = 'scale(1.5) translate(-50%, -50%)';
+        stopPropagation(event);
     });
 });
 
@@ -128,24 +129,27 @@ headers.forEach((header) => {
 // add keydown event listener
 document.body.addEventListener('keydown', (event) => {
     listener(event);
-    alert("You pressed a key!");
-})
+    pageHeader.style.animation = '3s linear 1s infinite running slidein';
+});
 
-// document.addEventListener('keydown');
+//***************#9*********************************************************************************** */
+// add select event listener
+let pageHeader = document.querySelector('h1');
+document.addEventListener('scroll', (event) => {
+
+});
 
 
-//*************************************************************************************************** */
-// add focus event listener
-// document.addEventListener('focus');
-
-
-//*******************#9********************************************************************************* */
+//**************#10********************************************************************************* */
 // add keyup event listener
-// document.addEventListener('keyup');
-//******************#10********************************************************************************* */
 
-// add scroll event listener to document
-// document.addEventListener('scroll)
+document.body.addEventListener("keyup", (event) => {
+    listener(event);
+    alert(event);
+    stopPropagation(event);
+});
+
+
 //**************************************************************************************************** */
 
 //************Stop  Propagation ************************************************************* */
