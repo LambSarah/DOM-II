@@ -114,16 +114,15 @@ text.forEach((txt) => { // adding contextmenu event listener to each
     });
 });
 
-
-// document.addEventListener('mousemove');
-
-
 //****************#7******************************************************************************** */
 // add mouseup event listener
-//document.addEventListener('mouseup');
-
-
-
+let headers = document.querySelectorAll('h2');
+headers.forEach((header) => {
+    header.addEventListener('mouseup', (event) => {
+        listener(event);
+        header.style.transform = 'scale(1.5) translate(-50%, -50%)';
+    });
+});
 
 //****************#8********************************************************************************* */
 // add keydown event listener
