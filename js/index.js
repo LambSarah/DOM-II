@@ -126,6 +126,11 @@ headers.forEach((header) => {
 
 //****************#8********************************************************************************* */
 // add keydown event listener
+document.body.addEventListener('keydown', (event) => {
+    listener(event);
+    alert("You pressed a key!");
+})
+
 // document.addEventListener('keydown');
 
 
